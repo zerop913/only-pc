@@ -1,0 +1,23 @@
+body {
+  font-family: "Montserrat Alternates", sans-serif;
+}
+
+.IconFavorite {
+  @apply self-center fill-white w-7 h-7;
+}
+
+.IconShoppingCart {
+  @apply self-center fill-white w-7 h-7;
+}
+
+.Item {
+  @apply flex flex-col items-center justify-center px-5 text-sm leading-3 text-center text-white max-w-[75px] duration-300 ease-in-out;
+}
+
+.Item:hover {
+  @apply scale-[1.07];
+}
+
+.IconProfile {
+  @apply flex rounded-2xl bg-zinc-500 h-[69px] w-[69px];
+}

@@ -1,0 +1,23 @@
+body {
+  font-family: "Montserrat Alternates", sans-serif;
+}
+
+.FormButton {
+  @apply flex flex-col justify-center text-sm font-medium leading-3 text-center text-white whitespace-nowrap;
+}
+
+.ContentButton {
+  @apply flex gap-4 px-5 py-4 bg-[#1F1E24] rounded-[30px] transition-colors duration-300 ease-in-out;
+}
+
+.ContentButton:hover {
+  @apply bg-[#383640];
+}
+
+.SvgConfigurator {
+  @apply shrink-0 w-3 aspect-[0.57] fill-white;
+}
+
+.TextStyle {
+  @apply flex-auto my-auto;
+}

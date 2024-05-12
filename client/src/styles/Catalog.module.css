@@ -1,0 +1,23 @@
+body {
+  font-family: "Montserrat Alternates", sans-serif;
+}
+
+.Form {
+  @apply rounded-xl bg-[#1F1E24] min-h-[120px] container px-[45px] py-[15px] mb-8;
+}
+
+.Categories {
+  @apply flex-grow;
+}
+
+.Cart {
+  @apply inline-flex flex-col items-center justify-center px-[22px] py-[17px] text-xs font-medium leading-3 text-white whitespace-nowrap rounded-lg bg-[#3C3A46] cursor-pointer transition-colors duration-300 ease-in-out;
+}
+
+.Cart:hover {
+  @apply bg-[#514f5e];
+}
+
+.Categories {
+  flex-grow: 1;
+}

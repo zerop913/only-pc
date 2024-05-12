@@ -1,0 +1,19 @@
+body {
+  font-family: "Montserrat Alternates", sans-serif;
+}
+
+.FormInput {
+  @apply relative bg-[#1F1E24] rounded-[30px] px-5 h-[50px] flex items-center gap-[14px] transition-colors duration-300 ease-in-out;
+}
+
+.FormInput:hover {
+  @apply bg-[#383640];
+}
+
+.FormInput:active {
+  @apply bg-[#383640];
+}
+
+.Input {
+  @apply ml-2 flex-grow bg-transparent border-none focus:outline-none text-neutral-100;
+}
