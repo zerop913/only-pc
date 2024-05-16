@@ -14,6 +14,9 @@ const zhestkieDiskiHddRoutes = require("./routes/zhestkieDiskiHddRoutes");
 const blokiPitaniyaRoutes = require("./routes/blokiPitaniyaRoutes");
 const korpusaRoutes = require("./routes/korpusaRoutes");
 const filtersRoutes = require("./routes/filtersRoutes");
+const authController = require("./controllers/authController");
+const authMiddleware = require("./middleware/authMiddleware");
+const userRoutes = require("./routes/userRoutes");
 
 app.use(cors());
 app.use(express.json());
@@ -31,6 +34,18 @@ app.use("/api/v1/zhestkie-diski-hdd", zhestkieDiskiHddRoutes);
 app.use("/api/v1/bloki-pitaniya", blokiPitaniyaRoutes);
 app.use("/api/v1/korpusa", korpusaRoutes);
 app.use("/api/v1/filters", filtersRoutes);
+app.post("/api/v1/register", authController.register);
+app.post("/api/v1/login", authController.login);
+app.use("/api/v1/user", userRoutes);
+
+app.get(
+  "/api/v1/admin",
+  authMiddleware.verifyToken,
+  authMiddleware.isAdmin,
+  (req, res) => {
+    res.json({ message: "Welcome, admin!" });
+  }
+);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

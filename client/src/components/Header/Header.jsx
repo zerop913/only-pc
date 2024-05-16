@@ -1,6 +1,5 @@
 import React from "react";
-
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/routes.js";
 
 import Logo from "../../images/Logo.svg";
@@ -11,13 +10,26 @@ import {
   ConfiguratorButton,
   CatalogButton,
 } from "../Buttons/SectionsButton/SectionsButton.jsx";
+import AuthButton from "../Buttons/AuthButton.jsx";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const isLoggedIn = localStorage.getItem("token");
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate(ROUTES.LOGIN);
+  };
+
+  const handleLogoClick = () => {
+    navigate(ROUTES.HOME);
+  };
+
   return (
     <header className="flex justify-start items-center mt-6 mb-14">
-      <Link to={ROUTES.HOME} className="mr-[50px]">
+      <div className="mr-[50px] cursor-pointer" onClick={handleLogoClick}>
         <img src={Logo} alt="OnlyPC" />
-      </Link>
+      </div>
       <div className="flex justify-center items-center gap-[30px]">
         <ConfiguratorButton />
         <CatalogButton />
@@ -25,6 +37,7 @@ const Header = () => {
       </div>
       <div className="flex ml-auto">
         <NavigationButton />
+        <AuthButton />
       </div>
     </header>
   );

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import AppRoutes from "../Routes/Routes";
 import Header from "../Header/Header";
 import Catalog from "../Catalog/Catalog";
@@ -8,6 +9,12 @@ import CategoryProducts from "../Catalog/CategoryProducts";
 import Info from "../Catalog/Info";
 import ConfirmationModal from "../Notifications/ConfirmationModal";
 import NotificationModal from "../Notifications/NotificationModal";
+import Registration from "../Profile/Registration";
+import Login from "../Profile/Login";
+import Profile from "../Profile/Profile";
+import PrivateRoute from "../Routes/PrivateRoute";
+import AdminRoute from "../Routes/AdminRoute";
+import AdminPanel from "../Admin/AdminPanel";
 
 const App = () => {
   const [currentCategory, setCurrentCategory] = useState(null);
@@ -18,6 +25,7 @@ const App = () => {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [productInBuilder, setProductInBuilder] = useState(null);
   const [tempSelectedProduct, setTempSelectedProduct] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     const fetchProductData = async (categoryName, productId) => {
@@ -128,30 +136,59 @@ const App = () => {
   return (
     <div className="MainContainer">
       <Header />
-      <Catalog
-        onCategoryClick={handleCategoryClick}
-        onSubcategoryClick={handleSubcategoryClick}
-        totalCost={getTotalCost()}
-      />
-      <div className="flex gap-[26px]">
-        {currentSubcategory ? (
-          <CategoryProducts
-            subcategory={currentSubcategory}
-            handleAddToBuilder={handleAddToBuilder}
-          />
-        ) : currentCategory ? (
-          <CategoryProducts
-            category={currentCategory}
-            handleAddToBuilder={handleAddToBuilder}
-          />
-        ) : (
-          <Products handleAddToBuilder={handleAddToBuilder} />
-        )}
-        <Build
-          selectedProducts={selectedProducts}
-          onRemoveProduct={handleRemoveProduct}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Catalog
+                onCategoryClick={handleCategoryClick}
+                onSubcategoryClick={handleSubcategoryClick}
+                totalCost={getTotalCost()}
+              />
+              <div className="flex gap-[26px]">
+                {currentSubcategory ? (
+                  <CategoryProducts
+                    subcategory={currentSubcategory}
+                    handleAddToBuilder={handleAddToBuilder}
+                  />
+                ) : currentCategory ? (
+                  <CategoryProducts
+                    category={currentCategory}
+                    handleAddToBuilder={handleAddToBuilder}
+                  />
+                ) : (
+                  <Products handleAddToBuilder={handleAddToBuilder} />
+                )}
+                <Build
+                  selectedProducts={selectedProducts}
+                  onRemoveProduct={handleRemoveProduct}
+                />
+              </div>
+            </>
+          }
         />
-      </div>
+        <Route path="/registration" element={<Registration />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <AdminRoute>
+              <AdminPanel />
+            </AdminRoute>
+          }
+        />
+        {/* Добавляем редирект */}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
       <ConfirmationModal
         isOpen={showConfirmationModal}
         onConfirm={handleConfirmReplaceProduct}

@@ -40,6 +40,12 @@ db.ZhestkieDiskiHdd = require("./zhestkieDiskiHdd")(
 db.BlokiPitaniya = require("./blokiPitaniya")(sequelize, Sequelize.DataTypes);
 db.Korpusa = require("./korpusa")(sequelize, Sequelize.DataTypes);
 db.Filter = require("./filter")(sequelize, Sequelize.DataTypes);
+const User = require("./user")(sequelize, Sequelize);
+const Role = require("./role")(sequelize, Sequelize);
+const UserInfo = require("./userInfo")(sequelize, Sequelize);
+db.User = User;
+db.Role = Role;
+db.UserInfo = UserInfo;
 
 db.Processor.associate(db);
 db.Category.associate(db);
@@ -53,5 +59,7 @@ db.NakopiteliSsd.associate(db);
 db.ZhestkieDiskiHdd.associate(db);
 db.BlokiPitaniya.associate(db);
 db.Korpusa.associate(db);
+db.User.associate(db);
+db.UserInfo.associate(db);
 
 module.exports = db;
