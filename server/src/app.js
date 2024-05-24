@@ -17,6 +17,7 @@ const filtersRoutes = require("./routes/filtersRoutes");
 const authController = require("./controllers/authController");
 const authMiddleware = require("./middleware/authMiddleware");
 const userRoutes = require("./routes/userRoutes");
+const imageRoutes = require("./routes/imageRoutes");
 
 app.use(cors());
 app.use(express.json());
@@ -37,6 +38,7 @@ app.use("/api/v1/filters", filtersRoutes);
 app.post("/api/v1/register", authController.register);
 app.post("/api/v1/login", authController.login);
 app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/upload-image", imageRoutes);
 
 app.get(
   "/api/v1/admin",

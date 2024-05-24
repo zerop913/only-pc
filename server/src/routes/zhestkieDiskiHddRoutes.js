@@ -7,5 +7,14 @@ router.get(
   "/:zhestkieDiskiHddId",
   zhestkieDiskiHddController.getZhestkieDiskiHddById
 );
+router.post("/", zhestkieDiskiHddController.createZhestkieDiskiHdd);
+router.put(
+  "/:zhestkieDiskiHddId",
+  zhestkieDiskiHddController.updateZhestkieDiskiHdd
+);
+router.delete(
+  "/:zhestkieDiskiHddId",
+  zhestkieDiskiHddController.deleteZhestkieDiskiHdd
+);
 
 module.exports = router;

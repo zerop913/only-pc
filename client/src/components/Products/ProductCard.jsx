@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import ProductModal from "./ProductModal";
 import { Link } from "react-router-dom";
+import { FaRegHeart } from "react-icons/fa";
 
-import favorite from "../../images/favorite.svg";
+// import favorite from "../../images/favorite.svg";
 
 function ProductImage({ image }) {
   return <img src={image} alt="Test Product" className="w-[90px] h-[90px]" />;
@@ -57,7 +58,7 @@ function ProductActions({ onAddToBuilder, product }) {
   return (
     <div className="flex gap-2 mt-3 text-xs leading-3 whitespace-nowrap">
       <button className="bg-[#3C3A46] rounded flex items-center justify-center w-full h-full p-2 cursor-pointer transition-colors duration-300 ease-in-out hover:bg-[#DD5B5B]">
-        <img src={favorite} alt="" className="h-4" />
+        <FaRegHeart className="h-4" />
       </button>
       <AddToCartButton onAddToBuilder={onAddToBuilder} product={product} />
     </div>

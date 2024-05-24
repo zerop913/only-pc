@@ -6,8 +6,8 @@ import Login from "../Profile/Login";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import { ROUTES } from "../../utils/routes";
+import AdminDashboard from "../Admin/AdminDashboard";
 import Profile from "../Profile/Profile";
-import AdminPanel from "../Admin/AdminPanel";
 
 const AppRoutes = () => (
   <Routes>
@@ -26,7 +26,7 @@ const AppRoutes = () => (
       path="/admin"
       element={
         <AdminRoute>
-          <AdminPanel />
+          <AdminDashboard />
         </AdminRoute>
       }
     />

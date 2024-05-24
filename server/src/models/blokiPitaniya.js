@@ -2,10 +2,19 @@ module.exports = (sequelize, DataTypes) => {
   const BlokiPitaniya = sequelize.define(
     "bloki_pitaniya",
     {
-      product_title: DataTypes.TEXT,
+      product_title: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
       product_images: DataTypes.TEXT,
-      price: DataTypes.INTEGER,
-      manufacturer: DataTypes.TEXT,
+      price: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      manufacturer: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
       manufacturer_code: DataTypes.TEXT,
       power: DataTypes.TEXT,
       standard: DataTypes.TEXT,

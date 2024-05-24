@@ -1,9 +1,6 @@
 import React, { useState } from "react";
+import { FaTh, FaList, FaFilter } from "react-icons/fa";
 import FilterModal from "../Modals/FilterModal";
-
-import tile from "../../images/tile.svg";
-import list from "../../images/list.svg";
-import filter from "../../images/filter.svg";
 
 const Menu = ({ category, onApplyFilters }) => {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
@@ -16,8 +13,9 @@ const Menu = ({ category, onApplyFilters }) => {
     setIsFilterModalOpen(false);
   };
 
-  const handleApplyFilters = (selectedFilters) => {
-    onApplyFilters(selectedFilters);
+  const handleApplyFilters = (filters) => {
+    onApplyFilters(filters);
+    handleCloseFilterModal();
   };
 
   return (
@@ -34,14 +32,24 @@ const Menu = ({ category, onApplyFilters }) => {
         </select>
       </div>
       <div className="max-w-full flex justify-between gap-[10px]">
-        <img src={tile} alt="Плитка" className="cursor-pointer" />
-        <img src={list} alt="Список" className="cursor-pointer" />
-        <img
-          src={filter}
-          alt="Фильтр"
-          className="cursor-pointer"
-          onClick={handleOpenFilterModal}
-        />
+        <div className="menu-item">
+          <FaTh
+            className="text-white text-2xl cursor-pointer hover:text-gray-300"
+            title="Плитка"
+          />
+        </div>
+        <div className="menu-item">
+          <FaList
+            className="text-white text-2xl cursor-pointer hover:text-gray-300"
+            title="Список"
+          />
+        </div>
+        <div className="menu-item" onClick={handleOpenFilterModal}>
+          <FaFilter
+            className="text-white text-2xl cursor-pointer hover:text-gray-300"
+            title="Фильтры"
+          />
+        </div>
       </div>
       <FilterModal
         isOpen={isFilterModalOpen}

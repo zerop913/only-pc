@@ -12,9 +12,9 @@ import NotificationModal from "../Notifications/NotificationModal";
 import Registration from "../Profile/Registration";
 import Login from "../Profile/Login";
 import Profile from "../Profile/Profile";
+import AdminDashboard from "../Admin/AdminDashboard";
 import PrivateRoute from "../Routes/PrivateRoute";
 import AdminRoute from "../Routes/AdminRoute";
-import AdminPanel from "../Admin/AdminPanel";
 
 const App = () => {
   const [currentCategory, setCurrentCategory] = useState(null);
@@ -182,7 +182,7 @@ const App = () => {
           path="/admin"
           element={
             <AdminRoute>
-              <AdminPanel />
+              <AdminDashboard />
             </AdminRoute>
           }
         />

@@ -7,5 +7,14 @@ router.get(
   "/:operativnayaPamyatId",
   operativnayaPamyatController.getOperativnayaPamyatById
 );
+router.post("/", operativnayaPamyatController.createOperativnayaPamyat);
+router.put(
+  "/:operativnayaPamyatId",
+  operativnayaPamyatController.updateOperativnayaPamyat
+);
+router.delete(
+  "/:operativnayaPamyatId",
+  operativnayaPamyatController.deleteOperativnayaPamyat
+);
 
 module.exports = router;
